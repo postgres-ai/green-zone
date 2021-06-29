@@ -1,0 +1,6 @@
+%syntax-version=1.0.0
+%project=green-zone
+%uri=https://github.com/postgres-ai/green-zone
+
+initial 2021-06-29T04:14:53Z akartasov <artyom@postgres.ai> # init a database schema
+@v0.0.1 2021-06-29T04:20:10Z akartasov <artyom@postgres.ai> # initial version
