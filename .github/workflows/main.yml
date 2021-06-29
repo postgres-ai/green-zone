@@ -25,7 +25,7 @@ jobs:
           max_duration: "600"
         env:
           DLMC_CI_ENDPOINT: ${{ secrets.DLMC_CI_ENDPOINT }}
-          DLMC_SECRET_TOKEN: ${{ secrets.DLMC_SECRET_TOKEN }}
+          DLMC_VERIFICATION_TOKEN: ${{ secrets.DLMC_VERIFICATION_TOKEN }}
 
       # Download artifacts
       - name: Upload artifacts
