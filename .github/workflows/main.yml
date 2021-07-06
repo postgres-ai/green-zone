@@ -10,9 +10,8 @@ jobs:
         uses: actions/checkout@v2
 
       # Run DB migrations with the public action
-      - name: Check DB migrations with DLE
-        # TODO: use an official action from the organization.
-        uses: agneum/migration-action@v0.0.12
+      - name: DB migrations checker with DLE
+        uses: postgres-ai/migration-ci-action@v0.1.1
         id: db-migrations
         with:
           dbname: test_small
