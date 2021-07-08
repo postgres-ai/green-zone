@@ -2,6 +2,6 @@
 
 begin;
 
-drop index if exists bid_idx;
+drop index concurrently if exists bid_idx;
 
 commit;

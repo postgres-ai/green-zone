@@ -2,6 +2,6 @@
 
 begin;
 
-create index bid_idx on pgbench_accounts(bid);
+create index concurrently bid_idx on pgbench_accounts(bid);
 
 commit;
