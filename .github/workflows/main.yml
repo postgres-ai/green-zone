@@ -19,6 +19,7 @@ jobs:
           commands: |
             sqitch config -l
             env
+            psql -c "grant usage on schema sqitch to public;"
             sqitch deploy --verbose db:pg://${PGUSER}:${PGPASSWORD}@${PGHOST}:${PGPORT}/${PGDATABASE}
             echo 'Migration has been completed'
           download_artifacts: true
