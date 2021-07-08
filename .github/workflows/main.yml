@@ -17,10 +17,8 @@ jobs:
         with:
           dbname: test_small
           commands: |
-            sqitch config -l
             env
-            psql -c "grant usage on schema sqitch to public;"
-            sqitch deploy --verbose db:pg://${PGUSER}:${PGPASSWORD}@${PGHOST}:${PGPORT}/${PGDATABASE}
+            sqitch deploy --verbose
             echo 'Migration has been completed'
           download_artifacts: true
           observation_interval: "10"
