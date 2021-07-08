@@ -17,7 +17,7 @@ jobs:
         with:
           dbname: test_small
           commands: |
-            sqitch init
+            sqitch init demo
             sqitch deploy
             echo 'Migration has been completed'
           download_artifacts: true
