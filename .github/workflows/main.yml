@@ -17,8 +17,8 @@ jobs:
         with:
           dbname: test_small
           commands: |
-            sqitch init demo
-            sqitch deploy
+            sqitch config -l
+            sqitch deploy --verbose --target demo
             echo 'Migration has been completed'
           download_artifacts: true
           observation_interval: "10"
