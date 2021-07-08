@@ -1,0 +1,42 @@
+on: [ push ]
+
+jobs:
+  migration_job:
+    runs-on: ubuntu-latest
+    name: CI migration
+    steps:
+      # Checkout the source code
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Run DB migrations with the public action
+      - name: DB migrations checker with DLE
+#        uses: postgres-ai/migration-ci-action@v0.1.1
+        uses: agneum/migration-action@v0.0.13
+        id: db-migrations
+        with:
+          dbname: test_small
+          commands: |
+            env
+            sqitch deploy --verbose
+            echo 'Migration has been completed'
+          download_artifacts: true
+          observation_interval: "10"
+          max_lock_duration: "1"
+          max_duration: "600"
+        env:
+          DLMC_CI_ENDPOINT: ${{ secrets.DLMC_CI_ENDPOINT }}
+          DLMC_VERIFICATION_TOKEN: ${{ secrets.DLMC_VERIFICATION_TOKEN }}
+
+      # Download artifacts
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifacts
+          path: artifacts/*
+          if-no-files-found: ignore
+        if: always()
+
+      # Show migration summary
+      - name: Get the response status
+        run: echo "${{ steps.db-migration.outputs.response }}"
