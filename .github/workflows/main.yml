@@ -39,6 +39,3 @@ jobs:
       # Show migration summary
       - name: Get the response status
         run: echo "${{ steps.db-migration.outputs.response }}"
-  -- Deploy green-zone:pgbench-accounts-index-bid to pg
-
-
