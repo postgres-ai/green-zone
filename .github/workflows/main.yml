@@ -18,9 +18,7 @@ jobs:
 
           export COMMENT="This is a multi-line test comment \
           - With GitHub **Markdown** :sparkles: \
-          - Created by [postgres-ai/migration-ci-action][1] \
-          \
-          [1]: https://github.com/marketplace/actions/database-lab-realistic-db-testing-in-ci"
+          - Created by [postgres-ai/migration-ci-action](https://github.com/marketplace/actions/database-lab-realistic-db-testing-in-ci)"
           export COMMENT_BODY="{ \"body\": \"$COMMENT\" }"
           echo $COMMENT_BODY
 
