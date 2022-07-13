@@ -13,11 +13,12 @@ jobs:
         env:
           URL: ${{ github.event.pull_request.comments_url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          COMMENT: "This is a multi-line test comment - With GitHub"
+          COMMENT: "This is a multi-line test comment |
+            - With GitHub **Markdown** :sparkles:"
         run: |
           echo $URL
           echo $COMMENT
-          export COMMENT_BODY="{'body':'$COMMENT'}"
+          export COMMENT_BODY='{"body":"'"$COMMENT"'"}'
           curl \
             -X POST \
             $URL \
