@@ -13,7 +13,7 @@ jobs:
         env:
           URL: ${{ github.event.pull_request.comments_url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          COMMENT: "This is a multi-line test comment: \n  - With GitHub **Markdown** :sparkles: \n  - Created by [postgres-ai/migration-ci-action][1] \n \n  [ 1 ]: https://github.com/marketplace/actions/database-lab-realistic-db-testing-in-ci"
+          COMMENT: "This is a multi-line test comment: - With GitHub **Markdown** :sparkles: - Created by [postgres-ai/migration-ci-action](https://github.com/marketplace/actions/database-lab-realistic-db-testing-in-ci)"
         run: |
           echo $URL
           echo $COMMENT
