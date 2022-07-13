@@ -21,15 +21,15 @@ jobs:
           - Created by [postgres-ai/migration-ci-action][1] \
           \
           [1]: https://github.com/marketplace/actions/database-lab-realistic-db-testing-in-ci"
-          export COMMENT_BODY="{ 'body': '$COMMENT' }"
+          export COMMENT_BODY='{ "body": "$COMMENT" }'
           echo $COMMENT_BODY
 
           curl \
             -X POST \
             $URL \
-            -H "Content-Type: application/vnd.github.raw+json" \
+            -H "Content-Type: application/vnd.github+json" \
             -H "Authorization: token $GITHUB_TOKEN" \
-            --data "$COMMENT"
+            --data "'$COMMENT_BODY'"
 
       # Run DB migrations with the public action
       - name: DB migrations checker with DLE
