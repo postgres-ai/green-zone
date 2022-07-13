@@ -15,13 +15,19 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo $URL
-          export COMMENT_BODY='{ "body": "Test comment" }'
+
+          export COMMENT_BODY="This is a multi-line test comment \
+          - With GitHub **Markdown** :sparkles: \
+          - Created by [postgres-ai/migration-ci-action][1] \
+          \
+          [1]: https://github.com/marketplace/actions/database-lab-realistic-db-testing-in-ci"
+
           curl \
             -X POST \
             $URL \
             -H "Content-Type: application/json" \
             -H "Authorization: token $GITHUB_TOKEN" \
-            --data "$COMMENT_BODY"
+            --data "'{ \"body\": \"$COMMENT_BODY\" }'"
 
       # Run DB migrations with the public action
       - name: DB migrations checker with DLE
