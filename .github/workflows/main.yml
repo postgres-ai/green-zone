@@ -14,10 +14,10 @@ jobs:
           URL: ${{ github.event.pull_request.comments_url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           COMMENT: |
-            This is a multi-line test comment:
-              - With GitHub **Markdown** :sparkles: 
-              - Created by [postgres-ai/migration-ci-action][1]
-
+            This is a multi-line test comment: \
+              - With GitHub **Markdown** :sparkles: \ 
+              - Created by [postgres-ai/migration-ci-action][1] \
+             \
             [ 1 ]: https://github.com/marketplace/actions/database-lab-realistic-db-testing-in-ci
         run: |
           echo $URL
