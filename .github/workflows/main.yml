@@ -1,4 +1,4 @@
-on: [ push ]
+on: [ pull_request ]
 
 jobs:
   migration_job:
@@ -8,6 +8,20 @@ jobs:
       # Checkout the source code
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Post comment to PR
+        env:
+          URL: ${{ github.event.pull_request.comments_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo $URL
+          export COMMENT_BODY='{ "body": "Test comment" }'
+          curl \
+            -X POST \
+            $URL \
+            -H "Content-Type: application/json" \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            --data "$COMMENT_BODY"
 
       # Run DB migrations with the public action
       - name: DB migrations checker with DLE
@@ -39,3 +53,5 @@ jobs:
       # Show migration summary
       - name: Get the response status
         run: echo "${{ steps.db-migration.outputs.response }}"
+
+
