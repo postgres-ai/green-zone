@@ -24,7 +24,7 @@ jobs:
             $URL \
             -H "Content-Type: application/json" \
             -H "Authorization: token $GITHUB_TOKEN" \
-            --data "{ \`"body\`": \`"$COMMENT\`" }"
+            --data "{ \""body\"": \""$COMMENT\"" }"
 
       # Run DB migrations with the public action
       - name: DB migrations checker with DLE
