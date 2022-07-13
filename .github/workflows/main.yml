@@ -17,12 +17,13 @@ jobs:
         run: |
           echo $URL
           echo $COMMENT
+          export COMMENT_BODY="{'body':'$COMMENT'}"
           curl \
             -X POST \
             $URL \
             -H "Content-Type: application/json" \
             -H "Authorization: token $GITHUB_TOKEN" \
-            --data "{ 'body': '$COMMENT' }"
+            --data "'$COMMENT_BODY'"
 
       # Run DB migrations with the public action
       - name: DB migrations checker with DLE
