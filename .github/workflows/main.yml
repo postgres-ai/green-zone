@@ -11,14 +11,25 @@ jobs:
 
       - name: Post comment to PR
         uses: peter-evans/create-or-update-comment@v2
-        with:
-          issue-number: ${{ github.event.pull_request.number }}
-          body: |
+        env:
+          COMMENT: |
             This is a multi-line test comment
             - With GitHub **Markdown** :sparkles:
             - Created by [postgres-ai/migration-ci-action][1]
 
             [1]: https://github.com/marketplace/actions/database-lab-realistic-db-testing-in-ci
+
+            ### Summary        
+              | Status | Passed  :heavy_check_mark: |
+              |:---:| ---  |
+              | Session | #872  |
+              | Project | - |
+              | DLE instance |  DLE version:v3.1.1-15-g1db723b-20220616-0755 |
+              | Data state at | 2022-06-12 00:00:06 +0000 UTC |
+              | Duration    | 44s|
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: $COMMENT
 
       # Run DB migrations with the public action
       - name: DB migrations checker with DLE
