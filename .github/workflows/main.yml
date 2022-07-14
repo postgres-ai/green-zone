@@ -29,7 +29,7 @@ jobs:
               | Duration    | 44s|
         with:
           issue-number: ${{ github.event.pull_request.number }}
-          body: ${{COMMENT}}
+          body: ${{ env.COMMENT }}
 
       # Run DB migrations with the public action
       - name: DB migrations checker with DLE
