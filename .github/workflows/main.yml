@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Post comment to PR
-        uses: peter-evans/create-or-update-comment@v2
+        uses: actions/github-script@v6
         env:
           COMMENT: |
             This is a multi-line test comment
@@ -24,12 +24,17 @@ jobs:
               |:---:| ---  |
               | Session | #872  |
               | Project | - |
-              | DLE instance |  DLE version:v3.1.1-15-g1db723b-20220616-0755 |
+              | DLE version | v3.1.1-15-g1db723b-20220616-0755 |
               | Data state at | 2022-06-12 00:00:06 +0000 UTC |
               | Duration    | 44s|
         with:
-          issue-number: ${{ github.event.pull_request.number }}
-          body: ${{ env.COMMENT }}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: github.event.pull_request.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'env.COMMENT'
+            })
 
       # Run DB migrations with the public action
       - name: DB migrations checker with DLE
