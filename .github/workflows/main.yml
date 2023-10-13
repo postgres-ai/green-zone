@@ -19,7 +19,7 @@ jobs:
           commands: |
             env
             sqitch deploy --verbose
-            echo 'Migration has been completed.'
+            echo 'Migration has been completed'
           download_artifacts: true
           observation_interval: "10"
           max_lock_duration: "1"
